@@ -8,6 +8,9 @@
                 <button class="button button-icon button-clear ion-navicon" menu-toggle="left">
                 </button>
             </ion-nav-buttons>
+            <ion-nav-buttons side="right">
+                <button class="button button-icon button-clear ion-compose"></button>
+            </ion-nav-buttons>
         </ion-nav-bar>
         <ion-nav-view name="menuContent"></ion-nav-view>
     </ion-side-menu-content>
@@ -21,11 +24,14 @@
                 <ion-item menu-close href="#/app/search" class="item-icon-left">
                     <i class="icon ion-home"></i>Home
                 </ion-item>
-                <ion-item menu-close href="#/app/search" class="item-icon-left">
+                <ion-item menu-close href="#/app/map" class="item-icon-left">
                     <i class="icon ion-android-globe"></i>Map
                 </ion-item>
-                <ion-item menu-close ng-click="#/app/account" class="item-icon-left">
+                <ion-item menu-close href="#/app/account" class="item-icon-left">
                     <i class="icon ion-person"></i>Account
+                </ion-item>
+                <ion-item menu-close href="#/app/login" class="item-icon-left">
+                    <i class="icon ion-person"></i>Login
                 </ion-item>
             </ion-list>
         </ion-content>

@@ -4,9 +4,9 @@
 // 'starter' is the name of this angular module example (also set in a <body> attribute in index.html)
 // the 2nd parameter is an array of 'requires'
 // 'starter.controllers' is found in controllers.js
-angular.module('starter', ['ionic', 'starter.controllers'])
+angular.module('starter', ['ionic', 'starter.controllers', 'firebase'])
 
-.run(function ($ionicPlatform) {
+.run(["$ionicPlatform", "$state", "$rootScope", function ($ionicPlatform, $state, $rootScope) {
     $ionicPlatform.ready(function () {
         // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard
         // for form inputs)
@@ -19,8 +19,26 @@ angular.module('starter', ['ionic', 'starter.controllers'])
             // org.apache.cordova.statusbar required
             StatusBar.styleDefault();
         }
+
+        $rootScope.$on("$stateChangeError", function (event, toState, toParams, fromState, fromParams, error) {
+            // We can catch the error thrown when the $requireAuth promise is rejected
+            // and redirect the user back to the home page
+            if (error === "AUTH_REQUIRED") {
+                $state.go("app.login");
+            }
+        });
+
+
     });
-})
+}])
+
+// let's create a re-usable factory that generates the $firebaseAuth instance
+.factory("Auth", ["$firebaseAuth",
+  function ($firebaseAuth) {
+        var ref = new Firebase("https://uberbookstest.firebaseio.com");
+        return $firebaseAuth(ref);
+  }
+])
 
 .config(function ($stateProvider, $urlRouterProvider) {
     $stateProvider
@@ -41,6 +59,47 @@ angular.module('starter', ['ionic', 'starter.controllers'])
             }
         }
     })
+
+    .state('app.login', {
+        url: '/login',
+        views: {
+            'menuContent': {
+                templateUrl: "templates/login.html",
+                controller: 'LoginCtrl'
+            }
+        }
+    })
+
+    .state('app.map', {
+        url: '/map',
+        views: {
+            'menuContent': {
+                templateUrl: "templates/map.html",
+                controller: 'MapCtrl'
+            }
+        }
+    })
+
+    .state('app.account', {
+        url: '/account',
+        views: {
+            'menuContent': {
+                templateUrl: "templates/account.html",
+                controller: 'AccountCtrl'
+            }
+        },
+        resolve: {
+            // controller will not be loaded until $requireAuth resolves
+            // Auth refers to our $firebaseAuth wrapper in the example above
+            "currentAuth": ["Auth", function (Auth) {
+                // $requireAuth returns a promise so the resolve waits for it to complete
+                // If the promise is rejected, it will throw a $stateChangeError (see above)
+                return Auth.$requireAuth();
+                }]
+        }
+    })
+
+
 
     //    .state('app.search', {
     //        url: '/search',
