@@ -14,7 +14,7 @@ angular.module('starter.controllers', [])
 
 .controller('PlaylistCtrl', function ($scope, $stateParams) {})
 
-.controller('LoginCtrl', function ($scope, $stateParams, Auth, $location, $q, Ref, $timeout) {
+.controller('LoginCtrl', function ($scope, $stateParams, Auth, $location, $q, Ref, $timeout, $ionicPopup) {
     $scope.passwordLogin = function (email, pass) {
         $scope.err = null;
         Auth.$authWithPassword({
@@ -30,9 +30,17 @@ angular.module('starter.controllers', [])
     $scope.createAccount = function (email, pass, confirm) {
         $scope.err = null;
         if (!pass) {
-            $scope.err = 'Please enter a password';
+            var alertPopup = $ionicPopup.alert({
+                title: "Error!",
+                template: "Please enter a password.",
+                okType: 'button-assertive'
+            })
         } else if (pass !== confirm) {
-            $scope.err = 'Passwords do not match';
+            var alertPopup = $ionicPopup.alert({
+                title: "Error!",
+                template: "Your passwords do not match.",
+                okType: 'button-assertive'
+            })
         } else {
             Auth.$createUser({
                     email: email,
@@ -108,12 +116,21 @@ angular.module('starter.controllers', [])
 
     function redirect() {
         //        Flash.create('success', "Thank you for logging in!");
+        var alertPopup = $ionicPopup.alert({
+            title: "Login successful!",
+            template: "Redirecting you to the home page."
+        })
         $location.path('/app/home');
     }
 
     function showError(err) {
         //        if(Object.keys(err).length != 0){
         //        Flash.create('danger', "There was an error. Please try again.");
+        var alertPopup = $ionicPopup.alert({
+            title: "Error!",
+            template: "It seems there's been some kind of error.<br>" + err,
+            okType: 'button-assertive'
+        })
         $scope.err = err;
         //        }
 
@@ -121,6 +138,10 @@ angular.module('starter.controllers', [])
 
     $scope.logout = function () {
         Auth.$unauth();
+        var alertPopup = $ionicPopup.alert({
+            title: "Logged out",
+            template: "You have been successfully logged out."
+        })
     }
 
 })
