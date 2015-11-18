@@ -4,7 +4,7 @@
 // 'starter' is the name of this angular module example (also set in a <body> attribute in index.html)
 // the 2nd parameter is an array of 'requires'
 // 'starter.controllers' is found in controllers.js
-angular.module('starter', ['ionic', 'starter.controllers', 'firebase'])
+angular.module('starter', ['ionic', 'starter.controllers', 'firebase', 'flash'])
 
 .run(["$ionicPlatform", "$state", "$rootScope", function ($ionicPlatform, $state, $rootScope) {
     $ionicPlatform.ready(function () {
@@ -38,6 +38,12 @@ angular.module('starter', ['ionic', 'starter.controllers', 'firebase'])
         var ref = new Firebase("https://uberbookstest.firebaseio.com");
         return $firebaseAuth(ref);
   }
+])
+
+.factory("Ref", [
+    function () {
+        return new Firebase("https://uberbookstest.firebaseio.com");
+    }
 ])
 
 .config(function ($stateProvider, $urlRouterProvider) {
