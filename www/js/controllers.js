@@ -12,9 +12,8 @@ angular.module('starter.controllers', [])
 
 })
 
-.controller('PlaylistCtrl', function ($scope, $stateParams) {})
 
-.controller('LoginCtrl', function ($scope, $stateParams, Auth, $location, $q, Ref, $timeout, $ionicPopup) {
+.controller('LoginCtrl', function ($scope, $stateParams, Auth, $location, $q, Ref, $timeout, $ionicPopup, $state) {
     $scope.passwordLogin = function (email, pass) {
         $scope.err = null;
         Auth.$authWithPassword({
@@ -115,17 +114,14 @@ angular.module('starter.controllers', [])
 
 
     function redirect() {
-        //        Flash.create('success', "Thank you for logging in!");
         var alertPopup = $ionicPopup.alert({
             title: "Login successful!",
-            template: "Redirecting you to the home page."
+            template: "Redirecting you..."
         })
-        $location.path('/app/home');
+        $state.go($state.previous);
     }
 
     function showError(err) {
-        //        if(Object.keys(err).length != 0){
-        //        Flash.create('danger', "There was an error. Please try again.");
         var alertPopup = $ionicPopup.alert({
             title: "Error!",
             template: "It seems there's been some kind of error.<br>" + err,
@@ -136,6 +132,12 @@ angular.module('starter.controllers', [])
 
     }
 
+
+
+})
+
+.controller('AccountCtrl', function ($scope, $stateParams, user, Auth, Ref, $firebaseObject, $timeout, $location) {
+    $scope.user = user;
     $scope.logout = function () {
         Auth.$unauth();
         var alertPopup = $ionicPopup.alert({
@@ -143,10 +145,78 @@ angular.module('starter.controllers', [])
             template: "You have been successfully logged out."
         })
     }
+    $scope.messages = [];
+    var profile = $firebaseObject(Ref.child('users/' + user.uid));
+    profile.$bindTo($scope, 'profile');
 
+
+    $scope.changePassword = function (oldPass, newPass, confirm) {
+        $scope.err = null;
+        if (!oldPass || !newPass) {
+            error('Please enter all fields.');
+        } else if (newPass !== confirm) {
+            error('Passwords do not match.');
+        } else {
+            Auth.$changePassword({
+                    email: profile.email,
+                    oldPassword: oldPass,
+                    newPassword: newPass
+                })
+                .then(function () {
+                    success('Password changed.');
+                }, error);
+        }
+    };
+
+    $scope.changeEmail = function (pass, newEmail) {
+        $scope.err = null;
+        Auth.$changeEmail({
+                password: pass,
+                newEmail: newEmail,
+                oldEmail: profile.email
+            })
+            .then(function () {
+                profile.email = newEmail;
+                profile.$save();
+                success('Email changed');
+            })
+            .catch(error);
+    };
+
+    $scope.showFlash = function () {
+        //        Flash.create('success', "Your information has been saved! Redirecting you to the home page in 5 seconds.");
+        setTimeout(function () {
+            $location.path('/home');
+        }, 5000)
+    }
+
+    function error(err) {
+        var alertPopup = $ionicPopup.alert({
+            title: "Error!",
+            template: "It seems there's been some kind of error.<br>" + err,
+            okType: 'button-assertive'
+        })
+        return alertPopup;
+    }
+
+    function success(msg) {
+        var alertPopup = $ionicPopup.alert({
+            title: "",
+            template: msg
+        })
+    }
+
+    function alert(msg, type) {
+        var obj = {
+            text: msg + '',
+            type: type
+        };
+        $scope.messages.unshift(obj);
+        $timeout(function () {
+            $scope.messages.splice($scope.messages.indexOf(obj), 1);
+        }, 10000);
+    }
 })
-
-.controller('AccountCtrl', function ($scope, $stateParams) {})
 
 .controller('MapCtrl', function ($scope, $stateParams) {})
 

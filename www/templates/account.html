@@ -1,5 +1,36 @@
 <ion-view view-title="Account">
     <ion-content class="padding">
-        <h1>This is the account view</h1>
+
+        <!--
+        <div class="list card balanced">
+            <div class="item item-text-wrap">Account</div>
+        </div>
+-->
+        <button class="button button-calm button-outline button-block">Account</button>
+        <form style="margin-bottom: 0px">
+            <div class="list">
+                <label class="item item-input">
+                    <span class="input-label">Name</span>
+                    <input type="text" name="name" ng-model="profile.name" />
+                </label>
+                <label class="item item-input">
+                    <span class="input-label">Email</span>
+                    <input type="text" name="name" ng-model="profile.email" />
+                </label>
+                <label class="item item-input">
+                    <span class="input-label">Kirtan Party</span>
+                    <input type="text" name="name" ng-model="profile.temple" />
+                </label>
+                <button class="button button-balanced button-full" ng-click="showFlash">Submit</button>
+
+            </div>
+        </form>
+
+        <button class="button button-royal button-block" ng-click="logout()" style="margin-top:0px">Log out</button>
+
+
+
+
+        <h1>This is the account view</h1> user is <pre>{{user | json}}</pre> profile is <pre>{{profile | json}}</pre>
     </ion-content>
 </ion-view>

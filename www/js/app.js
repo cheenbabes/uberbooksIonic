@@ -6,7 +6,7 @@
 // 'starter.controllers' is found in controllers.js
 angular.module('starter', ['ionic', 'starter.controllers', 'firebase', 'flash'])
 
-.run(["$ionicPlatform", "$state", "$rootScope", function ($ionicPlatform, $state, $rootScope) {
+.run(["$ionicPlatform", "$state", "$rootScope", "$stateParams", function ($ionicPlatform, $state, $rootScope, $stateParams) {
     $ionicPlatform.ready(function () {
         // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard
         // for form inputs)
@@ -26,6 +26,14 @@ angular.module('starter', ['ionic', 'starter.controllers', 'firebase', 'flash'])
             if (error === "AUTH_REQUIRED") {
                 $state.go("app.login");
             }
+        });
+
+        $rootScope.$state = $state;
+        $rootScope.$stateParams = $stateParams;
+
+        // add previous state property
+        $rootScope.$on('$stateChangeSuccess', function (event, toState, toParams, fromState) {
+            $state.previous = fromState;
         });
 
 
@@ -97,7 +105,7 @@ angular.module('starter', ['ionic', 'starter.controllers', 'firebase', 'flash'])
         resolve: {
             // controller will not be loaded until $requireAuth resolves
             // Auth refers to our $firebaseAuth wrapper in the example above
-            "currentAuth": ["Auth", function (Auth) {
+            "user": ["Auth", function (Auth) {
                 // $requireAuth returns a promise so the resolve waits for it to complete
                 // If the promise is rejected, it will throw a $stateChangeError (see above)
                 return Auth.$requireAuth();
