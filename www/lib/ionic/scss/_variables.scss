@@ -33,7 +33,7 @@ $line-height-small: 1.5 !default;
 $headings-font-family: $font-family-base !default;
 $headings-font-weight: 500 !default;
 $headings-line-height: 1.2 !default;
-$base-background-color: $lessdark!default;
+$base-background-color: lighten($lessdark, 15%) !default;
 $base-color: #000 !default;
 $link-color: $positive !default;
 $link-hover-color: darken($link-color,
