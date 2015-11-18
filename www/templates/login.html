@@ -43,7 +43,7 @@
                 <button class="button button-balanced button-full" ng-cloack ng-show="passwordMode" ng-click="recoverPassword()">Submit</button>
                 <button class="button button-assertive button-full" ng-cloak ng-show="passwordMode" ng-click="passwordMode = false">Cancel</button>
 
-                <button class="button button-clear button-royal button-full" style="cursor:default" ng-click="passwordMode=true" ng-hide="passwordMode">Forgot your password?</button>
+                <button class="button button-clear button-royal button-full" style="cursor:default" ng-click="passwordMode=true; createMode = false" ng-hide="passwordMode">Forgot your password?</button>
 
                 <button class="button button-royal button-outline" ng-click="logout()">Log out</button>
 
