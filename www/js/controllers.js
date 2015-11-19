@@ -253,4 +253,12 @@ angular.module('starter.controllers', [])
     });
 })
 
-.controller('HomeCtrl', function ($scope, $stateParams) {});
+.controller('HomeCtrl', function ($scope, $stateParams, geolocation) {
+    geolocation.getLocation().then(function (data) {
+        $scope.coords = {
+            lat: data.coords.latitude,
+            lon: data.coords.longitude
+        };
+    });
+
+});
