@@ -6,7 +6,9 @@
             <div class="item item-text-wrap">Account</div>
         </div>
 -->
-        <button class="button button-calm button-outline button-block">Account</button>
+        <div class="card-calm">
+            <div class="item item-text-wrap">Account</div>
+        </div>
         <form style="margin-bottom: 0px">
             <div class="list">
                 <label class="item item-input">
@@ -21,13 +23,34 @@
                     <span class="input-label">Kirtan Party</span>
                     <input type="text" name="name" ng-model="profile.temple" />
                 </label>
-                <button class="button button-balanced button-full" ng-click="showFlash">Submit</button>
+                <button class="button button-balanced button-full" ng-click="showFlash()">Submit</button>
 
             </div>
         </form>
 
         <button class="button button-royal button-block" ng-click="logout()" style="margin-top:0px">Log out</button>
 
+        <div class="card-calm" style="margin-top:12px">
+            <div class="item item-text-wrap">Change Your Password</div>
+        </div>
+        <form style="margin-bottom: 0px">
+            <div class="list">
+                <label class="item item-input">
+                    <span class="input-label">Current Password</span>
+                    <input type="text" name="name" ng-model="oldpass" />
+                </label>
+                <label class="item item-input">
+                    <span class="input-label">New Password</span>
+                    <input type="text" name="name" ng-model="newpass" />
+                </label>
+                <label class="item item-input">
+                    <span class="input-label">Confirm</span>
+                    <input type="text" name="name" ng-model="confirm" />
+                </label>
+                <button class="button button-balanced button-full ion-checkmark-round" ng-click="changePassword(oldpass, newpass, confirm)"> Change Password</button>
+
+            </div>
+        </form>
 
 
 

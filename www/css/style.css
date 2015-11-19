@@ -1,1 +1,9 @@
 /* Empty. Add your own CSS if you like */
+
+.card-calm .item {
+    border-color: #00ffff;
+    background: transparent;
+    text-align: center;
+    color: #00ffff;
+    margin-bottom: 6px;
+}

@@ -118,6 +118,7 @@ angular.module('starter.controllers', [])
             title: "Login successful!",
             template: "Redirecting you..."
         })
+        console.log($state.previous);
         $state.go($state.previous);
     }
 
@@ -136,7 +137,7 @@ angular.module('starter.controllers', [])
 
 })
 
-.controller('AccountCtrl', function ($scope, $stateParams, user, Auth, Ref, $firebaseObject, $timeout, $location) {
+.controller('AccountCtrl', function ($scope, $stateParams, user, Auth, Ref, $firebaseObject, $timeout, $location, $ionicPopup, $state) {
     $scope.user = user;
     $scope.logout = function () {
         Auth.$unauth();
@@ -144,6 +145,7 @@ angular.module('starter.controllers', [])
             title: "Logged out",
             template: "You have been successfully logged out."
         })
+        $state.go("app.home");
     }
     $scope.messages = [];
     var profile = $firebaseObject(Ref.child('users/' + user.uid));
@@ -185,9 +187,7 @@ angular.module('starter.controllers', [])
 
     $scope.showFlash = function () {
         //        Flash.create('success', "Your information has been saved! Redirecting you to the home page in 5 seconds.");
-        setTimeout(function () {
-            $location.path('/home');
-        }, 5000)
+        success("You have successfully updated your information.");
     }
 
     function error(err) {
@@ -201,7 +201,7 @@ angular.module('starter.controllers', [])
 
     function success(msg) {
         var alertPopup = $ionicPopup.alert({
-            title: "",
+            title: "Success",
             template: msg
         })
     }
