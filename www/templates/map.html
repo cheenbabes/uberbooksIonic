@@ -1,12 +1,8 @@
 <ion-view view-title="Map">
     <ion-content>
         <map center="{{coords.lat}}, {{coords.lon}}" zoom="5" styles="{{style}}" id="map">
-            <!--
-        <shape name="circle" ng-repeat="score in scores" stroke-color="#FF0000" stroke-opacity="0.8" stroke-weight="2" fill-color="#FF0000" fill-opacity="0.35" center="{{score.lat}}, {{score.lon}}" radius="{{score.money}}"></shape> 
-        radius needs to be bigger
--->
+            <!--Sample marker implementation-->
             <marker position="{{coords.lat}}, {{coords.lon}}" icon="{{icon}}"></marker>
-            <marker ng-repeat="score in scores" position="{{score.lat}}, {{score.lon}}" on-click="showInfoWindow(event, score)"></marker>
         </map>
     </ion-content>
 </ion-view>

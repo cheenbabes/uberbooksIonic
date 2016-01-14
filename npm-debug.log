@@ -1,0 +1,92 @@
+0 info it worked if it ends with ok
+1 verbose cli [ 'C:\\Program Files\\nodejs\\node.exe',
+1 verbose cli   'C:\\Program Files\\nodejs\\node_modules\\npm\\bin\\npm-cli.js',
+1 verbose cli   'rebuild',
+1 verbose cli   'node-sass' ]
+2 info using npm@2.14.12
+3 info using node@v4.2.4
+4 info readInstalled object
+5 verbose rebuild path, id [ 'C:\\Users\\ebaibourine\\Documents\\Personal\\Github\\uberbooksIonic\\node_modules\\gulp-sass\\node_modules\\node-sass',
+5 verbose rebuild   'node-sass@3.4.2' ]
+6 verbose rebuild path, id [ 'C:\\Users\\ebaibourine\\Documents\\Personal\\Github\\uberbooksIonic\\node_modules\\ionic\\node_modules\\ionic-app-lib\\node_modules\\node-sass',
+6 verbose rebuild   'node-sass@3.4.2' ]
+7 silly rebuild set [ 'C:\\Users\\ebaibourine\\Documents\\Personal\\Github\\uberbooksIonic\\node_modules\\gulp-sass\\node_modules\\node-sass',
+7 silly rebuild set   'C:\\Users\\ebaibourine\\Documents\\Personal\\Github\\uberbooksIonic\\node_modules\\ionic\\node_modules\\ionic-app-lib\\node_modules\\node-sass' ]
+8 info build C:\Users\ebaibourine\Documents\Personal\Github\uberbooksIonic\node_modules\gulp-sass\node_modules\node-sass
+9 info preinstall node-sass@3.4.2
+10 info linkStuff node-sass@3.4.2
+11 silly linkStuff node-sass@3.4.2 has C:\Users\ebaibourine\Documents\Personal\Github\uberbooksIonic\node_modules\gulp-sass\node_modules as its parent node_modules
+12 verbose linkBins node-sass@3.4.2
+13 verbose link bins [ { 'node-sass': 'bin/node-sass' },
+13 verbose link bins   'C:\\Users\\ebaibourine\\Documents\\Personal\\Github\\uberbooksIonic\\node_modules\\gulp-sass\\node_modules\\.bin',
+13 verbose link bins   false ]
+14 verbose linkMans node-sass@3.4.2
+15 verbose rebuildBundles node-sass@3.4.2
+16 verbose rebuildBundles [ '.bin',
+16 verbose rebuildBundles   'async-foreach',
+16 verbose rebuildBundles   'chalk',
+16 verbose rebuildBundles   'cross-spawn',
+16 verbose rebuildBundles   'gaze',
+16 verbose rebuildBundles   'get-stdin',
+16 verbose rebuildBundles   'glob',
+16 verbose rebuildBundles   'meow',
+16 verbose rebuildBundles   'mkdirp',
+16 verbose rebuildBundles   'nan',
+16 verbose rebuildBundles   'node-gyp',
+16 verbose rebuildBundles   'npmconf',
+16 verbose rebuildBundles   'request',
+16 verbose rebuildBundles   'sass-graph' ]
+17 info install node-sass@3.4.2
+18 verbose unsafe-perm in lifecycle true
+19 info postinstall node-sass@3.4.2
+20 verbose unsafe-perm in lifecycle true
+21 info build C:\Users\ebaibourine\Documents\Personal\Github\uberbooksIonic\node_modules\ionic\node_modules\ionic-app-lib\node_modules\node-sass
+22 info preinstall node-sass@3.4.2
+23 info linkStuff node-sass@3.4.2
+24 silly linkStuff node-sass@3.4.2 has C:\Users\ebaibourine\Documents\Personal\Github\uberbooksIonic\node_modules\ionic\node_modules\ionic-app-lib\node_modules as its parent node_modules
+25 verbose linkBins node-sass@3.4.2
+26 verbose link bins [ { 'node-sass': 'bin/node-sass' },
+26 verbose link bins   'C:\\Users\\ebaibourine\\Documents\\Personal\\Github\\uberbooksIonic\\node_modules\\ionic\\node_modules\\ionic-app-lib\\node_modules\\.bin',
+26 verbose link bins   false ]
+27 verbose linkMans node-sass@3.4.2
+28 verbose rebuildBundles node-sass@3.4.2
+29 verbose rebuildBundles [ 'async-foreach',
+29 verbose rebuildBundles   'chalk',
+29 verbose rebuildBundles   'gaze',
+29 verbose rebuildBundles   'get-stdin',
+29 verbose rebuildBundles   'glob',
+29 verbose rebuildBundles   'meow',
+29 verbose rebuildBundles   'mkdirp',
+29 verbose rebuildBundles   'nan',
+29 verbose rebuildBundles   'node-gyp' ]
+30 info install node-sass@3.4.2
+31 verbose unsafe-perm in lifecycle true
+32 info node-sass@3.4.2 Failed to exec install script
+33 verbose stack Error: node-sass@3.4.2 install: `node scripts/install.js`
+33 verbose stack Exit status 1
+33 verbose stack     at EventEmitter.<anonymous> (C:\Program Files\nodejs\node_modules\npm\lib\utils\lifecycle.js:214:16)
+33 verbose stack     at emitTwo (events.js:87:13)
+33 verbose stack     at EventEmitter.emit (events.js:172:7)
+33 verbose stack     at ChildProcess.<anonymous> (C:\Program Files\nodejs\node_modules\npm\lib\utils\spawn.js:24:14)
+33 verbose stack     at emitTwo (events.js:87:13)
+33 verbose stack     at ChildProcess.emit (events.js:172:7)
+33 verbose stack     at maybeClose (internal/child_process.js:818:16)
+33 verbose stack     at Process.ChildProcess._handle.onexit (internal/child_process.js:211:5)
+34 verbose pkgid node-sass@3.4.2
+35 verbose cwd C:\Users\ebaibourine\Documents\Personal\Github\uberbooksIonic
+36 error Windows_NT 6.1.7601
+37 error argv "C:\\Program Files\\nodejs\\node.exe" "C:\\Program Files\\nodejs\\node_modules\\npm\\bin\\npm-cli.js" "rebuild" "node-sass"
+38 error node v4.2.4
+39 error npm  v2.14.12
+40 error code ELIFECYCLE
+41 error node-sass@3.4.2 install: `node scripts/install.js`
+41 error Exit status 1
+42 error Failed at the node-sass@3.4.2 install script 'node scripts/install.js'.
+42 error This is most likely a problem with the node-sass package,
+42 error not with npm itself.
+42 error Tell the author that this fails on your system:
+42 error     node scripts/install.js
+42 error You can get their info via:
+42 error     npm owner ls node-sass
+42 error There is likely additional logging output above.
+43 verbose exit [ 1, true ]

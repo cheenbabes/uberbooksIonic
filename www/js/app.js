@@ -1,9 +1,3 @@
-// Ionic Starter App
-
-// angular.module is a global place for creating, registering and retrieving Angular modules
-// 'starter' is the name of this angular module example (also set in a <body> attribute in index.html)
-// the 2nd parameter is an array of 'requires'
-// 'starter.controllers' is found in controllers.js
 angular.module('starter', ['ionic', 'starter.controllers', 'firebase', 'flash', 'geolocation', 'ngMap'])
 
 .run(["$ionicPlatform", "$state", "$rootScope", "$stateParams", function ($ionicPlatform, $state, $rootScope, $stateParams) {
@@ -41,10 +35,11 @@ angular.module('starter', ['ionic', 'starter.controllers', 'firebase', 'flash', 
     });
 }])
 
+
 // let's create a re-usable factory that generates the $firebaseAuth instance
-.factory("Auth", ["$firebaseAuth",
+.factory("Auth", ["$firebaseAuth", 
   function ($firebaseAuth) {
-        var ref = new Firebase("https://uberbookstest.firebaseio.com");
+        var ref = new Firebase('https://uberbookstest.firebaseio.com');
         return $firebaseAuth(ref);
   }
 ])

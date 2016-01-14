@@ -2,17 +2,12 @@ angular.module('starter.controllers', [])
 
 .controller('AppCtrl', function ($scope, $ionicModal, $timeout) {
 
-    // With the new view caching in Ionic, Controllers are only called
-    // when they are recreated or on app start, instead of every page change.
-    // To listen for when this page is active (for example, to refresh data),
-    // listen for the $ionicView.enter event:
-    //$scope.$on('$ionicView.enter', function(e) {
-    //});
+ //Blank but this handles showing the side menu
 
 
 })
 
-
+//Handles profile creation, login, logout, and password recovery
 .controller('LoginCtrl', function ($scope, $stateParams, Auth, $location, $q, Ref, $timeout, $ionicPopup, $state) {
     $scope.passwordLogin = function (email, pass) {
         $scope.err = null;
@@ -137,6 +132,7 @@ angular.module('starter.controllers', [])
 
 })
 
+//Shows the user their info and allows password changes
 .controller('AccountCtrl', function ($scope, $stateParams, user, Auth, Ref, $firebaseObject, $timeout, $location, $ionicPopup, $state) {
     $scope.user = user;
     $scope.logout = function () {
@@ -218,8 +214,8 @@ angular.module('starter.controllers', [])
     }
 })
 
+//Sample implementation of a Google Map
 .controller('MapCtrl', function ($scope, $stateParams, $firebaseArray, $firebaseObject, geolocation, Ref) {
-    //grab location...async ugh
     geolocation.getLocation().then(function (data) {
         $scope.coords = {
             lat: data.coords.latitude,
@@ -228,6 +224,7 @@ angular.module('starter.controllers', [])
 
         $scope.scores = $firebaseArray(Ref.child('scores').limitToLast(250));
 
+        //This gives the nice blue Apple icon. Implement as desired        
         $scope.icon = {
             url: 'http://plebeosaur.us/etc/map/bluedot_retina.png',
             size: null, // size
@@ -236,23 +233,13 @@ angular.module('starter.controllers', [])
             scaledSize: new google.maps.Size(17, 17) // scaled size (required for Retina display icon)
         };
 
-        $scope.showInfoWindow = function (event, score) {
-            var infoWindow = new google.maps.InfoWindow();
-            var center = new google.maps.LatLng(score.lat, score.lon);
 
-            infoWindow.setContent('<h4>Summary</h4><p>Money: $' + score.money + '</p><p>Books: ' + score.books + '</p><p>Distributed by ' +
-                score.user + '</p><p>' + new Date(score.timestamp).toString() + '</p>');
-            infoWindow.setPosition(center);
-            infoWindow.open($scope.map);
-
-        };
-        Flash.create('success', "Displaying the last 250 scores");
     }).catch(function (error) {
-        console.log(error);
-        Flash.create('danger', "You have rejected geolocation services. You will not be able to see the map unless you enable your browser geolocation! Please check <a href='https://waziggle.com/BrowserAllow.aspx'>here</a> on how to enable it.");
+        
     });
 })
 
+//Shows the front page of the application
 .controller('HomeCtrl', function ($scope, $stateParams, geolocation) {
     geolocation.getLocation().then(function (data) {
         $scope.coords = {
