@@ -36,14 +36,14 @@ angular.module('starter', ['ionic', 'starter.controllers', 'firebase', 'flash', 
 }])
 
 
-// let's create a re-usable factory that generates the $firebaseAuth instance
-.factory("Auth", ["$firebaseAuth", 
-  function ($firebaseAuth) {
-        var ref = new Firebase('https://uberbookstest.firebaseio.com');
-        return $firebaseAuth(ref);
+.factory("Auth", ["$firebaseAuth",
+    "Ref",
+  function ($firebaseAuth, $Ref) {
+        return $firebaseAuth($Ref);
   }
 ])
 
+//ENTER YOUR FIREBASE URL HERE
 .factory("Ref", [
     function () {
         return new Firebase("https://uberbookstest.firebaseio.com");
