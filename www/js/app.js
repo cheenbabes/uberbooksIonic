@@ -46,7 +46,7 @@ angular.module('starter', ['ionic', 'starter.controllers', 'firebase', 'flash', 
 //ENTER YOUR FIREBASE URL HERE
 .factory("Ref", [
     function () {
-        return new Firebase("https://uberbookstest.firebaseio.com");
+        return new Firebase("https://your-firebase-here.firebaseio.com");
     }
 ])
 
